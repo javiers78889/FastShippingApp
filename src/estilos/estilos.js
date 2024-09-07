@@ -3,29 +3,25 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#343541',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop:100
   },
   image: {
     width: 140, // Ajusta el tamaño de la imagen según sea necesario
     height: 140,
     marginBottom: 20, // Espacio entre la imagen y el texto
-    shadowColor: '#FFFFFF', // Color de la sombra
-    shadowOffset: { width: 0, height: 2 }, // Desplazamiento de la sombra
-    shadowOpacity: 0.8, // Opacidad de la sombra
-    shadowRadius: 4, // Radio de la sombra
-    elevation: 5
+    alignItems:'center',
+    justifyContent:'center',
+    resizeMode:"contain"
   },
-  text: {
-    color: '#FFFFFF', // Texto blanco
-    fontSize: 40, // Tamaño del texto
-    textAlign: 'center', // Alinea el texto al centro
-    fontWeight: 'bold', // Negrita para hacer el texto más prominente
-    textShadowColor: '#FF00FF', // Color del resplandor (magenta)
-    textShadowOffset: { width: 0, height: 0 }, // Desplazamiento de la sombra (sin desplazamiento)
-    textShadowRadius: 10,
+  alerta:{
+
+    color:'red'
+
   },
+
   button: {
 
     borderRadius: 50, // Para hacer el botón redondo
@@ -42,27 +38,16 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
-  input: {
-    height: 40,
-    width: '100%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-  },
+
   output: {
     fontSize: 16,
   },
   gradient: {
-    width: '80%',
+    width: 300,
     padding: 20,
     alignItems: 'center',
-    borderRadius: 10,
-    shadowColor: '#ffffff', // Sombra blanca para dar efecto de neón
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10, // Sombra en Android
+    borderRadius: 50,
+    
 
   },
   roundButton: {
@@ -87,7 +72,51 @@ export const styles = StyleSheet.create({
   buttonContacto: {
     fontSize: 15,
     color: '#FFFFFF', // Color del texto negro,
-    marginTop:10
+    marginTop:10, 
 
   },
+  footer:{
+    color: 'white',
+    fontSize:10,
+  
+  },
+  containerButton:{
+    alignItems:'center',
+    justifyContent:'center',
+    marginBottom:30
+  },
+  textos: {
+    flexDirection: 'row', // Alinea los elementos en una fila
+    alignItems: 'center', // Centra verticalmente
+    height: 50, // Aumenta la altura para mayor comodidad
+    backgroundColor: 'white', // Fondo blanco para el campo
+    width: 300, // Ancho del contenedor
+    borderColor: 'gray', // Color del borde
+    borderWidth: 1, // Grosor del borde
+    borderRadius: 25, // Redondez para hacer el input más ovalado
+    paddingHorizontal: 10,
+    marginBottom: 20, // Espacio entre los campos
+    elevation: 10, // Sombra en Android
+    shadowColor: 'white', // Sombra blanca
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8, // Opacidad de la sombra
+    shadowRadius: 10, // Radio de la sombra
+  },
+  input: {
+    flex: 1, // Para que el input ocupe todo el espacio restante
+    paddingLeft: 10, // Separación entre el ícono y el texto
+    height: '100%', // Asegura que el input ocupe toda la altura del contenedor
+    borderRadius: 25, // Bordes redondeados para que coincida con el contenedor
+  },
+  icon: {
+    // Fondo gris para el ícono
+    borderRightWidth:0.5,
+    borderLeftColor:'gray',
+  
+    justifyContent: 'center',
+    alignItems: 'center', // Centra el ícono
+    width: 40, // Ajusta el ancho del contenedor del ícono
+    height: '50%', // Ajusta la altura del ícono al contenedor
+  },
+
 });

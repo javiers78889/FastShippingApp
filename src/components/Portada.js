@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, Image, View } from 'react-native';
+import { ActivityIndicator, Image, Text, View } from 'react-native';
 import fastImage from '../img/fast.png'
 import { styles } from '../estilos/estilos';
 export const Portada = () => {
@@ -17,6 +17,8 @@ export const Portada = () => {
         <View style={styles.container}>
             <Image source={fastImage} style={styles.image} />
             {loading ? (<ActivityIndicator size="large" color="#FFFF" />) : ('')}
+
+           
 
         </View>
     )

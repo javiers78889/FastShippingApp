@@ -1,35 +1,82 @@
-import React from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { styles } from '../estilos/estilos'
-import { LinearGradient } from 'expo-linear-gradient'
-import fastImage from '../img/fast.png'
-export const Login = () => {
-    
-    return (
-        <View style={styles.container}>
-            <Image source={fastImage} style={styles.image} />
-            <LinearGradient
-                colors={['#ffffff', '#e0e0e0', '#ffffff']} // Colores para el degradado neón blanco
-                start={{ x: 0.5, y: 0 }} // Inicia en el centro superior
-                end={{ x: 0.5, y: 1 }}   // Termina en el centro inferior
-                style={styles.gradient}
-            >
-                <TextInput style={styles.input}
-                    value={''}
-                    onChangeText={''}
-                    placeholder="User" />
-                <TextInput style={styles.input}
-                    value={''}
-                    onChangeText={''}
-                    placeholder="Password" />
-            </LinearGradient>
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { styles } from '../estilos/estilos';
+import { LinearGradient } from 'expo-linear-gradient';
+import fastImage from '../img/fast.png';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { LoginValidation } from '../validation/LoginValidation';
 
-            <TouchableOpacity style={styles.roundButton}  >
-                <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-           
-                <Text style={styles.buttonContacto}>Contacto</Text>
-            
-        </View>
-    )
+const initalCredential = {
+    'usuario': '',
+    'password': '',
 }
+
+export const Login = ({ LoginValidation, alerta }) => {
+    const [credential, setCredential] = useState(initalCredential)
+    const { usuario, password } = credential
+
+    const Leer = (name, value) => {
+        setCredential({ ...credential, [name]: value })
+    }
+
+    const Enviar = () => {
+        LoginValidation(credential)
+    }
+
+
+    return (
+        <LinearGradient
+            colors={['#FFD700', '#000000', '#000000']} // Amarillo, gris, negro
+            style={styles.container}
+            start={{ x: 1, y: 0 }} // Punto de inicio del gradiente
+            end={{ x: 1, y: 1.2 }} // Punto final del gradiente
+        >
+            <Image source={fastImage} style={styles.image} />
+
+            {/* Input para usuario */}
+            <View style={styles.textos}>
+                <View style={styles.icon}>
+                    <AntDesign name="user" size={20} color="black" />
+                </View>
+                <TextInput
+                    style={styles.input}
+                    value={usuario}
+                    onChangeText={(text) => Leer('usuario', text)}
+                    placeholder="User"
+                />
+            </View>
+
+            {/* Input para contraseña */}
+            <View style={styles.textos}>
+                <View style={styles.icon}>
+                    <AntDesign name="lock" size={20} color="black" />
+                </View>
+                <TextInput
+                    style={styles.input}
+                    value={password}
+                    onChangeText={(text) => Leer('password', text)}
+                    placeholder="Password"
+                    secureTextEntry
+                />
+            </View>
+            {alerta ? (<Text style={styles.alerta}>Credenciales Incorrectas</Text>) : ''}
+
+            {/* Botón de Login */}
+            <View style={styles.containerButton}>
+                <TouchableOpacity style={styles.roundButton} onPress={Enviar}>
+                    <Text style={styles.buttonText}>
+                        Login <AntDesign name="login" size={20} color="black" />
+                    </Text>
+                </TouchableOpacity>
+
+                <Text style={styles.buttonContacto}>
+                    Contacto <AntDesign name="contacts" size={15} color="white" />
+                </Text>
+            </View>
+
+            <Text style={styles.footer}>
+                © FastShippingAGS - Todos los Derechos Reservados.
+            </Text>
+        </LinearGradient>
+    );
+};
